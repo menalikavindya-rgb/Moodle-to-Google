@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Moodle to Google",
+  "version": "1.1",
+  "description": "Adds an Open in Google button next to Office and PDF files on Moodle.",
+  "permissions": ["identity"],
+  "host_permissions": [
+    "https://YOUR-MOODLE-SITE/*",
+    "https://*.sharepoint.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://YOUR-MOODLE-SITE/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "oauth2": {
+    "client_id": "PASTE-YOUR-CLIENT-ID.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/drive.file"]
+  }
+}
